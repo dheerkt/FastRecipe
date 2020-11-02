@@ -14,5 +14,3 @@ var firebaseConfig = {
 if(firebase.apps.length == 0) {
     firebase.initializeApp(firebaseConfig);
 }
-
-firebase.analytics();
