@@ -1,36 +1,54 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer, createAppContainer } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 import firebase from "firebase";
-import "./Components/firebase-config";
+import "./src/components/firebase-config";
 
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
-    </View>
-  );
-}
+import AccountScreen from './src/screens/AccountScreen'
+import RecipesScreen from './src/screens/RecipesScreen'
+import SavedScreen from './src/screens/SavedScreen'
 
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
+const Tab = createBottomTabNavigator(
+  {
+    // add more screens later
+    Recipes: {
+      screen: RecipesScreen
+    },
+    Saved: {
+      screen: SavedScreen
+    },
+    Account: {
+      screen: AccountScreen
+    },
+  },
+  {
+    initialRouteName: "Recipes",
+    defaultNavigationOptions: ({navigation}) => ({
+      // fix icons later
+      tabBarIcon: ({horizontal, tintColor}) => {
+        const {routeName} = navigation.state;
+        let iconName;
+        if (routeName === 'Recipes') {
+          iconName = 'ios-home';
+        } else if (routeName === 'Saved') {
+          iconName = 'ios-star';
+        } else if (routeName === 'Account') {
+          iconName = 'ios-settings';
+        }
+        return (
+          <Ionicons
+            name={iconName}
+            size={horizontal ? 20 : 25}
+            color={tintColor}
+          />
+        );
+      },
+    }),
+  },
+);
 
-const Tab = createBottomTabNavigator();
-
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
-  );
-}
+export default createAppContainer(Tab);
