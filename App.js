@@ -5,9 +5,6 @@ import { NavigationContainer, createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import firebase from "firebase";
-import "./src/components/firebase-config";
-
 import AccountScreen from './src/screens/AccountScreen'
 import RecipesScreen from './src/screens/RecipesScreen'
 import SavedScreen from './src/screens/SavedScreen'
