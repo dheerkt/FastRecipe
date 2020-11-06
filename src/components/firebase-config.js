@@ -1,6 +1,6 @@
 import firebase from "firebase";
 
-const firebaseConfig = {
+var firebaseConfig = {
   apiKey: "AIzaSyDmIo96HgKGEnzYtEmg3y2zgazvHLJk1Jo",
   authDomain: "cs-4720-de2cf.firebaseapp.com",
    databaseURL: "https://cs-4720-de2cf.firebaseio.com",
@@ -12,5 +12,5 @@ const firebaseConfig = {
 };
 
 if(firebase.apps.length == 0) {
-  firebase.initializeApp(firebaseConfig);
+    firebase.initializeApp(firebaseConfig);
 }

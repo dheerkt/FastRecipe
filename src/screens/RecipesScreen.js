@@ -1,23 +1,23 @@
-import React, {useState, useEffect} from "react";
-import { StyleSheet, Text, ScrollView, View } from 'react-native';
-import "../components/firebase-config.js";
-import firebase from "firebase";
-import RecipeCard from '../components/RecipeCard'
+import React from "react";
+import { StyleSheet, Text, View } from 'react-native';
 
-export default function RecipesScreen() {
-    const [data, setData] = useState('');
-    
-    useEffect(() => {
-        async function getData() {
-            const snapshot = await firebase.database().ref("recipes").once("value")
-            setData(snapshot.val())
-        }
-        getData();
-    }, [])
-
-    return(
-        <ScrollView>
-            <RecipeCard result={(Object.entries(data))}></RecipeCard>
-        </ScrollView>
-    )
+class RecipesScreen extends React.Component {
+    render() {
+        return (
+            <View style={styles.container}>
+                <Text>Recipes</Text>
+            </View>
+        );
+    }
 }
+  
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+});
+  
+export default RecipesScreen;
+  
