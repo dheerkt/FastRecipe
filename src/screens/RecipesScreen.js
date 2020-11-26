@@ -4,7 +4,8 @@ import "../components/firebase-config.js";
 import firebase from "firebase";
 import RecipeCard from '../components/RecipeCard'
 
-export default function RecipesScreen() {
+
+export default function RecipesScreen({navigation}) {
     const [data, setData] = useState('');
     
     useEffect(() => {
@@ -17,7 +18,7 @@ export default function RecipesScreen() {
 
     return(
         <ScrollView>
-            <RecipeCard result={(Object.entries(data))}></RecipeCard>
+            <RecipeCard result={(Object.entries(data))} navigation={navigation}></RecipeCard>
         </ScrollView>
     )
 }

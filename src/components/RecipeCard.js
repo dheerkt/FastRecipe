@@ -39,7 +39,7 @@ export default function RecipeCard(props) {
                             color="#fff"
                             />&nbsp;{recipe[1].rating} rating </Text>
                         }  />
-                        <Button title="See Recipe"></Button>
+                        <Button title="See Recipe" onPress={() => props.navigation.navigate('Recipe', {data: recipe[1]})}/>
                     </View>
                 </Card>
             </View>

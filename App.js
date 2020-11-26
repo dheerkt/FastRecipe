@@ -1,19 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { NavigationContainer, createAppContainer } from 'react-navigation';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { Button, Text, View } from 'react-native';
+import { createAppContainer, NavigationEvents } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack'
+import { createBottomTabNavigator} from 'react-navigation-tabs'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import AccountScreen from './src/screens/AccountScreen'
 import RecipesScreen from './src/screens/RecipesScreen'
 import SavedScreen from './src/screens/SavedScreen'
+import RecipeScreen from './src/screens/RecipeScreen'
+
+const RecipeStack = createStackNavigator({
+  Recipes: {
+    screen: RecipesScreen,
+  },
+  Recipe: {
+    screen: RecipeScreen,
+  },
+},
+{
+  defaultNavigationOptions: {
+    header: null,
+  },
+}) 
 
 const Tab = createBottomTabNavigator(
   {
     // add more screens later
     Recipes: {
-      screen: RecipesScreen
+      screen: RecipeStack
     },
     Saved: {
       screen: SavedScreen

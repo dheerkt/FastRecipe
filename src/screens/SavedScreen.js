@@ -1,14 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View } from 'react-native';
 
-class SavedScreen extends React.Component {
-    render() {
-        return (
-            <View style={styles.container}>
-                <Text>Saved</Text>
-            </View>
-        );
-    }
+export default function SavedScreen() {
+    return (
+        <View style={styles.container}>
+            <Text>Saved</Text>
+        </View>
+    );
 }
   
 const styles = StyleSheet.create({
@@ -17,7 +15,4 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-});
-  
-export default SavedScreen;
-  
+});  
