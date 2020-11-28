@@ -20,7 +20,7 @@ const RecipeStack = createStackNavigator({
 },
 {
   defaultNavigationOptions: {
-    header: null,
+    headerShown: false,
   },
 }) 
 

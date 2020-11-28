@@ -17,15 +17,15 @@ export default function RecipeScreen(props) {
 
         <Button style={{zIndex: "999"}} title="Back" onPress={() => props.navigation.navigate('Recipes')}/>
 
-        <Text h3 style={{position: "absolute", bottom: 50, left: 25, fontWeight: 800, color: "#FFF"}}>{result.name}</Text>
+        <Text h3 style={{position: "absolute", bottom: 50, left: 25, color: "#FFF"}}>{result.name}</Text>
         </View>
         <View style={{marginHorizontal: 25, marginVertical: 10}}>
             <View style={{marginVertical: 15}}>
-                <Text h4 style={{fontWeight: 600}}>Ingredients</Text>
+                <Text h4>Ingredients</Text>
                 <Text>{result.ingredients}</Text>
             </View>
             <View>
-                <Text h4 style={{fontWeight: 600}}>Method</Text>
+                <Text h4>Method</Text>
                 <Text>{result.instructions}</Text>
             </View>
         </View>
