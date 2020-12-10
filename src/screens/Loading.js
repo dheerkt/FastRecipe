@@ -1,0 +1,34 @@
+// Loading.js
+import React from 'react'
+import { View, Text, ActivityIndicator, StyleSheet } from 'react-native'
+import firebase from "firebase";
+import "../components/firebase-config.js";
+
+export default class Loading extends React.Component {
+
+  UNSAFE_componentWillMount() {
+    this.props.navigation.addListener('didFocus',
+      payload => {
+        firebase.auth().onAuthStateChanged(user => {
+          this.props.navigation.navigate(user ? 'Account' : 'Register')
+        })
+      }
+    );
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text>Loading</Text>
+        <ActivityIndicator size="large" />
+      </View>
+    )
+  }
+}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
+})
